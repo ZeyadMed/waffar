@@ -118,7 +118,7 @@ class _CustomtextfieldState extends State<Customtextfield> {
                 ),
               )
             : const SizedBox.shrink(),
-        SizedBox(height: 8.h),
+        if (widget.labelText != null) SizedBox(height: 8.h),
         TextFormField(
           readOnly: widget.onDateSelected != null ? true : widget.readOnly,
           maxLength: widget.maxLength,

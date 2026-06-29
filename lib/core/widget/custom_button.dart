@@ -14,7 +14,8 @@ class CustomButton extends StatelessWidget {
   final Color textColor;
   final double borderRadius;
   final EdgeInsetsGeometry padding;
-  final double? width; // ← Now properly used
+  final EdgeInsetsGeometry outerPadding;
+  final double? width;
   final double? height;
   final VoidCallback onPressed;
   final bool isIcon;
@@ -29,6 +30,7 @@ class CustomButton extends StatelessWidget {
     this.textColor = Colors.white,
     this.borderRadius = 12.0,
     this.padding = const EdgeInsets.all(15),
+    this.outerPadding = const EdgeInsets.symmetric(horizontal: 15.0),
     required this.onPressed,
     this.iconBackgroundColor = AppColors.whiteColor,
     this.isIcon = false,
@@ -42,7 +44,7 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+      padding: outerPadding,
       child: GestureDetector(
         onTap: onPressed,
         child: Container(
@@ -57,22 +59,24 @@ class CustomButton extends StatelessWidget {
                 : null,
           ),
           child: isIcon
-              ? Center(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      if (icon != null) ...[icon!, Gap(10.w)],
-                      LocalizedLabel(
-                        text: title,
-                        style: TextStyles.darkBold16.copyWith(
-                          color: textColor,
-                          fontWeight: fontWeight ?? FontWeight.w700,
-                          fontSize: fontSize ?? 16.spMax,
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    if (icon != null) ...[icon!, Gap(10.w)],
+                    Flexible(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: LocalizedLabel(
+                          text: title,
+                          style: TextStyles.darkBold16.copyWith(
+                            color: textColor,
+                            fontWeight: fontWeight ?? FontWeight.w700,
+                            fontSize: fontSize ?? 16.spMax,
+                          ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 )
               : Center(
                   child: LocalizedLabel(

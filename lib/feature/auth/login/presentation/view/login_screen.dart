@@ -126,6 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       title: "sign_in_with_google",
                       fontSize: 14.sp,
                       isIcon: true,
+                      outerPadding: EdgeInsets.zero,
                       icon: Image.asset(
                         Assets.assetsIconsGoogle,
                         width: 20.w,
@@ -146,6 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       title: "sign_in_with_apple",
                       fontSize: 14.sp,
                       isIcon: true,
+                      outerPadding: EdgeInsets.zero,
                       icon: SvgPicture.asset(
                         Assets.assetsIconsApple,
                         width: 20.w,
