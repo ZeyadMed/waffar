@@ -37,6 +37,14 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                   Expanded(
+                    flex: 1,
+                    child: CategorySidebar(
+                      categories: _mainCategories,
+                      selectedIndex: _selectedCategoryIndex,
+                      onSelect: (index) => setState(() => _selectedCategoryIndex = index),
+                    ),
+                  ),
                   Expanded(
                     flex: 3,
                     child: Container(
@@ -61,14 +69,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                       ),
                     ),
                   ),
-                  Expanded(
-                    flex: 1,
-                    child: CategorySidebar(
-                      categories: _mainCategories,
-                      selectedIndex: _selectedCategoryIndex,
-                      onSelect: (index) => setState(() => _selectedCategoryIndex = index),
-                    ),
-                  ),
+                 
                 ],
               ),
             ),

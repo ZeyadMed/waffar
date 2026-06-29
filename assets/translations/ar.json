@@ -59,7 +59,7 @@
   "nationalIdEmpty": "الرقم القومي لا يمكن أن يكون فارغًا",
   "invalidNationalId": "يجب أن يكون الرقم القومي 14 رقمًا بالضبط",
   "onlyEnglishDigits": "يرجى استخدام الأرقام الإنجليزية فقط (0-9)",
-  "browse": "تصفح",
+  "category": "الاقسام",
   "purchases": "المشتريات",
   "downloads": "التنزيلات",
   "profile": "البروفايل",

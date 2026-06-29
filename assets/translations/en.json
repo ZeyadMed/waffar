@@ -59,7 +59,7 @@
   "nationalIdEmpty": "National ID cannot be empty",
   "invalidNationalId": "National ID must be exactly 14 digits",
   "onlyEnglishDigits": "Please use English digits only (0-9)",
-  "browse": "Browse",
+  "category": "Category",
   "purchases": "Purchases",
   "downloads": "Downloads",
   "profile": "Profile",
