@@ -1,0 +1,195 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
+import 'package:waffar/core/common_widget/label.dart';
+import 'package:waffar/core/helper/validators.dart';
+import 'package:waffar/core/router/app_router.dart';
+import 'package:waffar/core/style/assets.dart';
+import 'package:waffar/core/theme/text_styles.dart';
+import 'package:waffar/core/widget/custom_button.dart';
+import 'package:waffar/core/widget/custom_text_field.dart';
+import 'package:waffar/core/widget/divider_widget.dart';
+
+import '../../../../../../core/style/app_colors.dart';
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  bool obscureText = true;
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(25.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              LocalizedLabel(
+                text: "welcome_back",
+                style: TextStyles.blackBold32,
+              ),
+              Gap(10.h),
+              LocalizedLabel(
+                text: "sign_in_to_waffar",
+                style: TextStyles.blackRegular16.copyWith(
+                  color: AppColors.lightTextColor,
+                ),
+              ),
+              Gap(40.h),
+              // Email Field
+              Customtextfield(
+                textEditingController: emailController,
+                hintText: 'email'.tr(),
+                keyboardType: TextInputType.emailAddress,
+                prefix: const Icon(Icons.email_outlined),
+                validator: Validators.emailValidator,
+              ),
+              Gap(10.h),
+
+              // Password Field
+              Customtextfield(
+                hintText: 'password'.tr(),
+                keyboardType: TextInputType.visiblePassword,
+                prefix: const Icon(Icons.lock_outlined),
+                validator: Validators.passwordValidator,
+                textEditingController: passwordController,
+                obscureText: obscureText,
+                suffix: IconButton(
+                  onPressed: () {
+                    setState(() => obscureText = !obscureText);
+                  },
+                  icon: Icon(
+                    obscureText ? Icons.visibility_off : Icons.visibility,
+                  ),
+                ),
+              ),
+
+              Gap(15.h),
+
+              // Forgot Password
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      context.go(AppRouter.forgetPassword);
+                    },
+                    child: LocalizedLabel(
+                      text: "forgot_password",
+                      style: TextStyles.blackBold14.copyWith(
+                        color: AppColors.primaryColor,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              Gap(30.h),
+
+              // Sign In Button
+              CustomButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    // TODO: Handle login logic
+                  }
+                  context.go(AppRouter.initialRoot);
+                },
+                title: "sign_in".tr(),
+              ),
+              Gap(20.h),
+              DividerWidget(text: "or".tr()),
+              Gap(20.h),
+              // Google & Apple Buttons
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomButton(
+                      onPressed: () {
+                        // TODO: Google Sign In
+                      },
+                      title: "sign_in_with_google",
+                      fontSize: 14.sp,
+                      isIcon: true,
+                      icon: Image.asset(
+                        Assets.assetsIconsGoogle,
+                        width: 20.w,
+                        height: 20.h,
+                      ),
+                      backgroundColor: Colors.white,
+                      textColor: Colors.black,
+                      borderColor: Colors.grey.shade300,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Gap(12.w),
+                  Expanded(
+                    child: CustomButton(
+                      onPressed: () {
+                        // TODO: Apple Sign In
+                      },
+                      title: "sign_in_with_apple",
+                      fontSize: 14.sp,
+                      isIcon: true,
+                      icon: SvgPicture.asset(
+                        Assets.assetsIconsApple,
+                        width: 20.w,
+                        height: 20.h,
+                      ),
+                      backgroundColor: Colors.white,
+                      textColor: Colors.black,
+                      borderColor: Colors.grey.shade300,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+
+              Gap(30.h),
+
+              // Don't have an account?
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  LocalizedLabel(
+                    text: "dont_have_account",
+                    style: TextStyles.blackRegular16.copyWith(
+                      color: AppColors.lightTextColor,
+                    ),
+                  ),
+                  Gap(6.w),
+                  GestureDetector(
+                    onTap: () {
+                      context.go(AppRouter.signUp);
+                    },
+                    child: LocalizedLabel(
+                      text: "create_one",
+                      style: TextStyles.blackBold16.copyWith(
+                        color: AppColors.primaryColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
