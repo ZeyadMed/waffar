@@ -5,14 +5,15 @@ import 'package:waffar/core/style/app_colors.dart';
 import 'package:waffar/core/style/assets.dart';
 import 'package:waffar/core/theme/text_styles.dart';
 import 'package:waffar/core/widget/flexiable_image.dart';
-import 'package:waffar/core/widget/quantity_button.dart';
 
 class CartItemCard extends StatelessWidget {
   final String productName;
   final String productDescription;
+  final String price;
   final void Function()? onTapDelete;
   final int quantity;
   final ValueChanged<int> onQuantityChanged;
+  final VoidCallback? onImageTap;
 
   const CartItemCard({
     super.key,
@@ -20,56 +21,78 @@ class CartItemCard extends StatelessWidget {
     required this.onQuantityChanged,
     required this.productName,
     required this.productDescription,
+    required this.price,
     this.onTapDelete,
+    this.onImageTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.only(bottom: 10.0),
       child: Container(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(12.0),
         width: double.infinity,
         decoration: BoxDecoration(
           color: AppColors.whiteColor,
           borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(color: AppColors.greyColor, width: 0.5),
+          border: Border.all(color: Colors.grey.shade300, width: 1),
         ),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            FlexibleImage(
-              source: Assets.assetsImagesIphone,
-              width: 80,
-              height: context.screenHeight * 0.1,
+            GestureDetector(
+              onTap: onImageTap,
+              child: FlexibleImage(
+                source: Assets.assetsImagesIphone,
+                width: 70,
+                height: 90,
+                fit: BoxFit.contain,
+              ),
             ),
-            Gap(10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(productName, style: TextStyles.blackBold14),
-                Gap(5),
-                Text(productDescription, style: TextStyles.blackRegular14),
-                Gap(25),
-                _buildQuantitySelector(),
-              ],
-            ),
-            Spacer(),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: onTapDelete,
-                  child: Icon(Icons.delete, color: AppColors.greyColor),
-                ),
-                Gap(10),
-                Text(
-                  "499 SAR",
-                  style: TextStyles.blackBold14.copyWith(
-                    color: AppColors.primaryColor,
+            const Gap(12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          productName,
+                          style: TextStyles.blackBold14,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: onTapDelete,
+                        child: const Icon(Icons.delete_outline, color: Colors.grey, size: 20),
+                      ),
+                    ],
                   ),
-                ),
-              ],
+                  const Gap(4),
+                  Text(
+                    productDescription,
+                    style: TextStyles.blackRegular12.copyWith(color: Colors.grey.shade600),
+                  ),
+                  const Gap(12),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        price,
+                        style: TextStyles.blackBold16.copyWith(
+                          color: AppColors.primaryColor,
+                        ),
+                      ),
+                      _buildQuantitySelector(),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -78,26 +101,33 @@ class CartItemCard extends StatelessWidget {
   }
 
   Widget _buildQuantitySelector() {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        // Text('الكمية', style: TextStyles.blackBold14),
-        // Gap(8),
-        QuantityButton(
-          icon: Icons.remove,
-          onTap: () {
-            if (quantity > 1) onQuantityChanged(quantity - 1);
-          },
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: Text('$quantity', style: TextStyles.blackBold16),
-        ),
-        QuantityButton(
-          icon: Icons.add,
-          onTap: () => onQuantityChanged(quantity + 1),
-        ),
-      ],
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey.shade300),
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          InkWell(
+            onTap: () => onQuantityChanged(quantity + 1),
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+              child: Icon(Icons.add, size: 16, color: Colors.black54),
+            ),
+          ),
+          Text('$quantity', style: TextStyles.blackBold14),
+          InkWell(
+            onTap: () {
+              if (quantity > 1) onQuantityChanged(quantity - 1);
+            },
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+              child: Icon(Icons.remove, size: 16, color: Colors.black54),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

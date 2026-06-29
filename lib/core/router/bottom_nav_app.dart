@@ -9,6 +9,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:waffar/feature/cart/presentation/view/cart_screen.dart';
 import 'package:waffar/feature/home/presentation/view/home_screen.dart';
 import 'package:waffar/feature/splash/presentation/view/splash_screen.dart';
+import 'package:waffar/feature/categories/presentation/view/categories_screen.dart';
+import 'package:waffar/core/widget/store_switcher_bottom_sheet.dart';
 
 class BottomNavApp extends StatefulWidget {
   const BottomNavApp({super.key});
@@ -35,14 +37,14 @@ class _BottomNavAppState extends State<BottomNavApp> {
       selectedIcon: Icons.grid_view_rounded,
     ),
     _BottomNavItemData(
-      labelKey: 'purchases',
-      unselectedIcon: Icons.receipt_long_outlined,
-      selectedIcon: Icons.receipt_long_rounded,
+      labelKey: 'country',
+      unselectedIcon: Icons.public,
+      selectedIcon: Icons.public,
     ),
     _BottomNavItemData(
-      labelKey: 'downloads',
-      unselectedIcon: Icons.cloud_download_outlined,
-      selectedIcon: Icons.cloud_download_rounded,
+      labelKey: 'cart',
+      unselectedIcon: Icons.shopping_cart_outlined,
+      selectedIcon: Icons.shopping_cart_rounded,
     ),
     _BottomNavItemData(
       labelKey: 'profile',
@@ -70,13 +72,14 @@ class _BottomNavAppState extends State<BottomNavApp> {
         page = HomeScreen();
         break;
       case 1:
-        page = CartScreen();
+        page = const CategoriesScreen();
         break;
       case 2:
-        page = HomeScreen();
+        page = const SizedBox.shrink(); // Intercepted
         break;
       case 3:
-        page = HomeScreen();
+        page = const CartScreen();
+        break;
       case 4:
         page = HomeScreen();
         break;
@@ -89,6 +92,10 @@ class _BottomNavAppState extends State<BottomNavApp> {
   }
 
   void _onItemTapped(int index) {
+    if (index == 2) {
+      StoreSwitcherBottomSheet.show(context);
+      return;
+    }
     setState(() {
       _selectedIndex = index;
       _getPage(index);
@@ -160,7 +167,7 @@ class _BottomNavAppState extends State<BottomNavApp> {
 
     // Build children list with only loaded pages
     final children = <Widget>[];
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
       if (_cachedPages.containsKey(i)) {
         children.add(_cachedPages[i]!);
       } else {
