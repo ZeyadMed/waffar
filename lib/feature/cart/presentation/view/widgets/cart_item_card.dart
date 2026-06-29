@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:waffar/core/extension/context_extension.dart';
 import 'package:waffar/core/style/app_colors.dart';
 import 'package:waffar/core/style/assets.dart';
 import 'package:waffar/core/theme/text_styles.dart';
 import 'package:waffar/core/widget/flexiable_image.dart';
+import 'package:waffar/feature/cart/presentation/view/widgets/cart_item_quantity_selector.dart';
 
 class CartItemCard extends StatelessWidget {
   final String productName;
@@ -82,13 +82,11 @@ class CartItemCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        price,
-                        style: TextStyles.blackBold16.copyWith(
-                          color: AppColors.primaryColor,
-                        ),
+                      Text(price, style: TextStyles.blackBold16.copyWith(color: AppColors.primaryColor)),
+                      CartItemQuantitySelector(
+                        quantity: quantity,
+                        onQuantityChanged: onQuantityChanged,
                       ),
-                      _buildQuantitySelector(),
                     ],
                   ),
                 ],
@@ -96,37 +94,6 @@ class CartItemCard extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildQuantitySelector() {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade300),
-        borderRadius: BorderRadius.circular(4),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          InkWell(
-            onTap: () => onQuantityChanged(quantity + 1),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-              child: Icon(Icons.add, size: 16, color: Colors.black54),
-            ),
-          ),
-          Text('$quantity', style: TextStyles.blackBold14),
-          InkWell(
-            onTap: () {
-              if (quantity > 1) onQuantityChanged(quantity - 1);
-            },
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-              child: Icon(Icons.remove, size: 16, color: Colors.black54),
-            ),
-          ),
-        ],
       ),
     );
   }
