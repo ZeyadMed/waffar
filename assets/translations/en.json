@@ -118,5 +118,22 @@
   "tracking_ordered": "Ordered",
   "tracking_prepared": "Prepared",
   "tracking_shipped": "Shipped",
-  "tracking_delivered": "Delivered"
+  "tracking_delivered": "Delivered",
+  "profile_settings": "Settings",
+  "profile_language": "Language",
+  "profile_language_arabic": "Arabic",
+  "profile_currency": "Currency",
+  "profile_currency_aed": "AED",
+  "profile_security_note": "Your account is safe and your data is protected",
+  "profile_track_order": "Track Order",
+  "profile_my_orders": "My Orders",
+  "profile_wishlist": "Wishlist",
+  "profile_recently_viewed": "Recently Viewed",
+  "profile_pending_order_question": "Do you have a pending order you want to track?",
+  "profile_follow_us": "Follow us on social media",
+  "profile_instagram": "Instagram",
+  "profile_tiktok": "TikTok",
+  "profile_youtube": "YouTube",
+  "profile_snapchat": "Snapchat",
+  "my_account": "My Account"
 }

@@ -13,6 +13,7 @@ import 'package:waffar/feature/home/presentation/view/home_screen.dart';
 import 'package:waffar/feature/home/presentation/view/subcategory_screen.dart';
 import 'package:waffar/feature/on_boarding/presentation/views/on_boarding_screen.dart';
 import 'package:waffar/feature/product_details/presentation/view/product_details_screen.dart';
+import 'package:waffar/feature/profile/presentation/view/profile_screen.dart';
 import 'package:waffar/feature/splash/presentation/view/splash_screen.dart';
 import 'package:waffar/main.dart';
 
@@ -130,6 +131,10 @@ abstract class AppRouter {
       GoRoute(
         path: orderDetailsScreen,
         builder: (context, state) => const OrderDetailsScreen(),
+      ),
+      GoRoute(
+        path: profileScreen,
+        builder: (context, state) => const ProfileScreen(),
       ),
 
       // GoRoute(

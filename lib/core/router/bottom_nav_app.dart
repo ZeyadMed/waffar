@@ -9,6 +9,7 @@ import 'package:waffar/core/widget/store_switcher_bottom_sheet.dart';
 import 'package:waffar/feature/cart/presentation/view/cart_screen.dart';
 import 'package:waffar/feature/categories/presentation/view/categories_screen.dart';
 import 'package:waffar/feature/home/presentation/view/home_screen.dart';
+import 'package:waffar/feature/profile/presentation/view/profile_screen.dart';
 
 class BottomNavApp extends StatefulWidget {
   const BottomNavApp({super.key});
@@ -37,7 +38,7 @@ class _BottomNavAppState extends State<BottomNavApp> {
       1 => const CategoriesScreen(),
       2 => const SizedBox.shrink(),
       3 => const CartScreen(),
-      4 => HomeScreen(),
+      4 => const ProfileScreen(),
       _ => const SizedBox.shrink(),
     };
 

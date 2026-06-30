@@ -118,5 +118,22 @@
   "tracking_ordered": "تم الطلب",
   "tracking_prepared": "تم التجهيز",
   "tracking_shipped": "تم الشحن",
-  "tracking_delivered": "تم التسليم"
+  "tracking_delivered": "تم التسليم",
+  "profile_settings": "الاعدادات",
+  "profile_language": "اللغة",
+  "profile_language_arabic": "العربية",
+  "profile_currency": "العملة",
+  "profile_currency_aed": "د.إ",
+  "profile_security_note": "حسابك آمن وبياناتك محمية",
+  "profile_track_order": "تتبع الطلب",
+  "profile_my_orders": "جميع طلباتي",
+  "profile_wishlist": "قائمة المفضلة",
+  "profile_recently_viewed": "منتجات شاهدتها مؤخرا",
+  "profile_pending_order_question": "هل لديك طلب قائم وترغب في تتبعه ؟",
+  "profile_follow_us": "تابعنا علي وسائل التواصل الاجتماعية",
+  "profile_instagram": "انستجرام",
+  "profile_tiktok": "تيك توك",
+  "profile_youtube": "يوتيوب",
+  "profile_snapchat": "سناب شات",
+  "my_account": "حسابي"
 }
