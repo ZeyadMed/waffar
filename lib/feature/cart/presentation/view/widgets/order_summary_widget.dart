@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:waffar/core/theme/text_styles.dart';
+import 'package:waffar/feature/cart/presentation/view/widgets/build_row_summary_widget.dart';
 import 'package:waffar/feature/cart/presentation/view/widgets/discount_code_field.dart';
 import 'package:waffar/feature/cart/presentation/view/widgets/order_action_buttons.dart';
 
@@ -23,11 +24,11 @@ class OrderSummaryWidget extends StatelessWidget {
           const Gap(10),
           const DiscountCodeField(),
           const Gap(20),
-          _buildSummaryRow("المجموع", "499 د.أ"),
+          BuildRowSummaryWidget("المجموع", "499 د.أ"),
           const Gap(10),
-          _buildSummaryRow("الخصم", "0 د.أ"),
+          BuildRowSummaryWidget("الخصم", "0 د.أ"),
           const Gap(10),
-          _buildSummaryRow("الشحن", "0 د.أ"),
+          BuildRowSummaryWidget("الشحن", "0 د.أ"),
           const Gap(15),
           const Divider(),
           const Gap(10),
@@ -45,13 +46,6 @@ class OrderSummaryWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildSummaryRow(String label, String value) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(label, style: TextStyles.blackRegular12.copyWith(color: Colors.grey.shade600)),
-        Text(value, style: TextStyles.blackBold14),
-      ],
-    );
-  }
+  
+  
 }

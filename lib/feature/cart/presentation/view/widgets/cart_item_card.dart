@@ -69,23 +69,34 @@ class CartItemCard extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: onTapDelete,
-                        child: const Icon(Icons.delete_outline, color: Colors.grey, size: 20),
+                        child: const Icon(
+                          Icons.delete_outline,
+                          color: Colors.grey,
+                          size: 20,
+                        ),
                       ),
                     ],
                   ),
                   const Gap(4),
                   Text(
                     productDescription,
-                    style: TextStyles.blackRegular12.copyWith(color: Colors.grey.shade600),
+                    style: TextStyles.blackRegular12.copyWith(
+                      color: Colors.grey.shade600,
+                    ),
                   ),
                   const Gap(12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(price, style: TextStyles.blackBold16.copyWith(color: AppColors.primaryColor)),
                       CartItemQuantitySelector(
                         quantity: quantity,
                         onQuantityChanged: onQuantityChanged,
+                      ),
+                      Text(
+                        price,
+                        style: TextStyles.blackBold16.copyWith(
+                          color: AppColors.primaryColor,
+                        ),
                       ),
                     ],
                   ),

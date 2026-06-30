@@ -40,7 +40,6 @@ class _InstallmentBanner extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // const Icon(Icons.arrow_back_ios, size: 14, color: Color(0xFF00897B)),
           Expanded(
             child: Text(
               text,
