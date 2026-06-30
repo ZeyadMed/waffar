@@ -81,7 +81,9 @@ class CartItemCard extends StatelessWidget {
                   const Gap(4),
                   Text(
                     productDescription,
-                    style: TextStyles.blackRegular12.copyWith(color: Colors.grey.shade600),
+                    style: TextStyles.blackRegular12.copyWith(
+                      color: Colors.grey.shade600,
+                    ),
                   ),
                   const Gap(12),
                   Row(

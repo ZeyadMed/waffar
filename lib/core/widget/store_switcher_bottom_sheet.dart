@@ -37,20 +37,20 @@ class _StoreSwitcherBottomSheetState extends State<StoreSwitcherBottomSheet> {
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              Center(
+                child: LocalizedLabel(
+                  text: "تبديل المتجر",
+                  style: TextStyles.blackBold16,
+                ),
+              ),
+              Spacer(),
               IconButton(
                 icon: const Icon(Icons.close, color: AppColors.primaryColor),
                 onPressed: () => Navigator.pop(context),
               ),
-              LocalizedLabel(
-                text: "تبديل المتجر",
-                style: TextStyles.blackBold16,
-              ),
-              const SizedBox(width: 48), // Balance for title centering
             ],
           ),
           const Gap(20),
