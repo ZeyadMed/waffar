@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:waffar/core/style/app_colors.dart';
 import 'package:waffar/core/style/assets.dart';
@@ -47,7 +48,7 @@ class CategoryProductsGrid extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: Text(
-                  "سكوترات كهربائية للاطفال تكتك",
+                  'scooter_name'.tr(),
                   textAlign: TextAlign.center,
                   style: TextStyles.blackRegular12.copyWith(fontSize: 10),
                   maxLines: 2,

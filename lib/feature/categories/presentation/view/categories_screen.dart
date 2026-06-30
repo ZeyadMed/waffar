@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:waffar/core/common_widget/label.dart';
@@ -17,13 +18,13 @@ class CategoriesScreen extends StatefulWidget {
 class _CategoriesScreenState extends State<CategoriesScreen> {
   int _selectedCategoryIndex = 0;
 
-  final List<String> _mainCategories = [
-    "الالكترونيات\nواجهزة منزلية",
-    "الموبايلات\nواكسسوارات\nالموبايل",
-    "العناية\nالشخصية",
-    "تلفزيونات\nوانظمة\nمسرح منزلي",
-    "مستلزمات\nوادوات\nالمطبخ",
-    "ماكينة القهوة\nومعدات\nالقهوة",
+  List<String> get _mainCategories => [
+    'cat_electronics'.tr(),
+    'cat_mobile'.tr(),
+    'cat_personal_care_label'.tr(),
+    'cat_tv'.tr(),
+    'cat_kitchen'.tr(),
+    'cat_coffee'.tr(),
   ];
 
   @override
@@ -58,7 +59,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                             const CategoryProductsGrid(),
                             const Gap(20),
                             LocalizedLabel(
-                              text: "افضل البراندات",
+                              text: 'best_brands',
                               style: TextStyles.blackBold16,
                             ),
                             const Gap(15),

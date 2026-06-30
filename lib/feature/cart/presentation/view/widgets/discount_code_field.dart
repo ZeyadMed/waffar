@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:waffar/core/style/app_colors.dart';
@@ -12,7 +13,7 @@ class DiscountCodeField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "اضافة كود الخصم",
+          'add_discount_code'.tr(),
           style: TextStyles.blackRegular12.copyWith(color: AppColors.primaryColor),
         ),
         const Gap(8),
@@ -23,7 +24,7 @@ class DiscountCodeField extends StatelessWidget {
                 height: 40,
                 child: TextField(
                   decoration: InputDecoration(
-                    hintText: 'ادخل الكود',
+                    hintText: 'enter_code'.tr(),
                     hintStyle: TextStyles.blackRegular12.copyWith(color: Colors.grey),
                     contentPadding: const EdgeInsets.symmetric(horizontal: 12),
                     border: OutlineInputBorder(
@@ -49,7 +50,7 @@ class DiscountCodeField extends StatelessWidget {
                     borderRadius: BorderRadius.circular(4),
                   ),
                 ),
-                child: Text("تفعيل", style: TextStyles.whiteBold14),
+                child: Text('activate'.tr(), style: TextStyles.whiteBold14),
               ),
             ),
           ],

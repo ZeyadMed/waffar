@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -421,25 +422,10 @@ class _OrderDetailsBottomSheet {
 class _OrderDetailsContent extends StatelessWidget {
   const _OrderDetailsContent();
 
-  static const _cartItems = [
-    (
-      name: 'كفر ايفون 17 بروماكس اسود جرين ليون',
-      description: 'Green Lion Deludo PC Case',
-      price: '499 د.أ',
-      quantity: 1,
-    ),
-    (
-      name: 'كفر ايفون 17 بروماكس اسود جرين ليون',
-      description: 'Green Lion Deludo PC Case',
-      price: '499 د.أ',
-      quantity: 1,
-    ),
-    (
-      name: 'كفر ايفون 17 بروماكس اسود جرين ليون',
-      description: 'Green Lion Deludo PC Case',
-      price: '499 د.أ',
-      quantity: 1,
-    ),
+  List<({String name, String description, String price, int quantity})> get _cartItems => [
+    (name: 'prod_name_dummy'.tr(), description: 'Green Lion Deludo PC Case', price: 'prod_price_dummy'.tr(), quantity: 1),
+    (name: 'prod_name_dummy'.tr(), description: 'Green Lion Deludo PC Case', price: 'prod_price_dummy'.tr(), quantity: 1),
+    (name: 'prod_name_dummy'.tr(), description: 'Green Lion Deludo PC Case', price: 'prod_price_dummy'.tr(), quantity: 1),
   ];
 
   @override

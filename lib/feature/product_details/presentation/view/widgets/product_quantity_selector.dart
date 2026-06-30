@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:waffar/core/helper/helper.dart';
 import 'package:waffar/core/theme/text_styles.dart';
@@ -21,7 +22,7 @@ class ProductQuantitySelector extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         children: [
-          Text('الكمية', style: TextStyles.blackBold14),
+          Text('quantity'.tr(), style: TextStyles.blackBold14),
           const Spacer(),
           QuantityButton(icon: Icons.remove, onTap: onDecrement),
           Padding(

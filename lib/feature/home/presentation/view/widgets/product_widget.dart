@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:gap/gap.dart';
 import 'package:waffar/core/helper/helper.dart';
 import 'package:waffar/core/theme/text_styles.dart';
@@ -58,7 +59,7 @@ class ProductWidget extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    "خصم %17",
+                    'discount_17'.tr(),
                     style: TextStyle(
                       color: const Color(0xffC91B1B),
                       fontSize: 10.sp,

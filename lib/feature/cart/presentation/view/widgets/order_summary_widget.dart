@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:waffar/core/theme/text_styles.dart';
@@ -20,22 +21,22 @@ class OrderSummaryWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("ملخص الطلب", style: TextStyles.blackBold16),
+          Text('order_summary'.tr(), style: TextStyles.blackBold16),
           const Gap(10),
           const DiscountCodeField(),
           const Gap(20),
-          BuildRowSummaryWidget("المجموع", "499 د.أ"),
+          BuildRowSummaryWidget('summary_total'.tr(), "499 د.أ"),
           const Gap(10),
-          BuildRowSummaryWidget("الخصم", "0 د.أ"),
+          BuildRowSummaryWidget('summary_discount'.tr(), "0 د.أ"),
           const Gap(10),
-          BuildRowSummaryWidget("الشحن", "0 د.أ"),
+          BuildRowSummaryWidget('summary_shipping'.tr(), "0 د.أ"),
           const Gap(15),
           const Divider(),
           const Gap(10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("الاجمالي", style: TextStyles.blackBold16),
+              Text('summary_grand_total'.tr(), style: TextStyles.blackBold16),
               Text("499 د.أ", style: TextStyles.blackBold16),
             ],
           ),

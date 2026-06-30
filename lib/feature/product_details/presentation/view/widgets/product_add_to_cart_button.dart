@@ -9,7 +9,7 @@ class ProductAddToCartButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomButton(
-      title: 'اطلبه الان',
+      title: 'order_now',
       onPressed: onPressed,
       backgroundColor: AppColors.primaryColor,
       textColor: Colors.white,

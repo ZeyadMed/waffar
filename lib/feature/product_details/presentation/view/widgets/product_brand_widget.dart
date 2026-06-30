@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:gap/gap.dart';
 import 'package:waffar/core/helper/helper.dart';
 import 'package:waffar/core/theme/text_styles.dart';
@@ -40,14 +41,14 @@ class ProductBrandWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              Text('شاومي', style: TextStyles.blackBold14),
+              Text('brand_xiaomi'.tr(), style: TextStyles.blackBold14),
             ],
           ),
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'تسوق كل المنتجات',
+                'shop_all_products'.tr(),
                 style: TextStyles.blackBold14.copyWith(
                   color: AppColors.redColor,
                   fontSize: 13,

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -32,18 +33,19 @@ class ImagePickerHelper {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(   "اختر صورة",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              Text(
+                'choose_image'.tr(),
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               ListTile(
                 leading: const Icon(Icons.camera_alt, color: Colors.blue),
-                title:  const Text( "التقاط من الكاميرا"),
+                title: Text('capture_camera'.tr()),
                 onTap: () => pickImage(context, onImagePicked,
                     source: ImageSource.camera),
               ),
               ListTile(
                 leading: const Icon(Icons.photo_library, color: Colors.blue),
-                title: const Text( "اختر من المعرض"),
+                title: Text('choose_gallery'.tr()),
                 onTap: () => pickImage(context, onImagePicked,
                     source: ImageSource.gallery),
               ),

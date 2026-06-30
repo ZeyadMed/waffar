@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:gap/gap.dart';
 import 'package:waffar/core/helper/helper.dart';
 import 'package:waffar/core/theme/text_styles.dart';
@@ -13,7 +14,7 @@ class ProductInfoWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'كفر ايفون 17 برو ماكس اسود جرين ليون',
+            'prod_name_iphone'.tr(),
             style: TextStyles.blackBold16,
             textAlign: TextAlign.right,
           ),
@@ -26,14 +27,14 @@ class ProductInfoWidget extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '499 د.إ',
+                    'prod_price_main'.tr(),
                     style: TextStyles.blackBold20.copyWith(
                       color: AppColors.primaryColor,
                     ),
                   ),
                   const Gap(4),
                   Text(
-                    '600 د.إ',
+                    'prod_price_original'.tr(),
                     style: TextStyles.greyRegular15.copyWith(
                       decoration: TextDecoration.lineThrough,
                       color: AppColors.lightTextColor,
@@ -48,7 +49,7 @@ class ProductInfoWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: Text(
-                  'خصم 17 %',
+                  'discount_17'.tr(),
                   style: TextStyles.darkBold12.copyWith(color: AppColors.redColor2),
                 ),
               ),
@@ -56,7 +57,7 @@ class ProductInfoWidget extends StatelessWidget {
           ),
           const Gap(6),
           Text(
-            'وفر 11 د.إ',
+            'save_11'.tr(),
             style: TextStyles.darkBold12.copyWith(color: AppColors.redColor2),
           ),
         ],

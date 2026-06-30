@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../extension/context_extension.dart';
 import '../network/encrupt.dart';
 import 'either.dart';
@@ -566,24 +567,24 @@ final class BaseApiConsumer implements ApiConsumer {
     switch (error.type) {
       case DioExceptionType.cancel:
         scaffoldMessengerKey.currentContext?.showErrorMessage(
-          'تم الغاء الطلب ',
+          'request_cancelled'.tr(),
         );
-        return ServerFailure(message: 'تم إلغاء الطلب ');
+        return ServerFailure(message: 'request_cancelled'.tr());
       case DioExceptionType.connectionTimeout:
         scaffoldMessengerKey.currentContext?.showErrorMessage(
-          'انتهت مهلة الاتصال ',
+          'connection_timeout'.tr(),
         );
-        return ServerFailure(message: 'انتهت مهلة الاتصال ');
+        return ServerFailure(message: 'connection_timeout'.tr());
       case DioExceptionType.receiveTimeout:
         scaffoldMessengerKey.currentContext?.showErrorMessage(
-          'انتهت مهلة الاتصال ',
+          'receive_timeout'.tr(),
         );
-        return ServerFailure(message: 'انتهت مهلة الاستقبال في الاتصال ');
+        return ServerFailure(message: 'receive_timeout'.tr());
       case DioExceptionType.sendTimeout:
         scaffoldMessengerKey.currentContext?.showErrorMessage(
-          'انتهت مهلة الاتصال ',
+          'send_timeout'.tr(),
         );
-        return ServerFailure(message: 'انتهت مهلة الإرسال في الاتصال ');
+        return ServerFailure(message: 'send_timeout'.tr());
       case DioExceptionType.badResponse:
         if (error.response?.data != null) {
           try {
@@ -596,10 +597,10 @@ final class BaseApiConsumer implements ApiConsumer {
             }
             if (error.response?.statusCode == 401) {
               scaffoldMessengerKey.currentContext?.showErrorMessage(
-                'عاود التسجيل من فضلك',
+                're_register'.tr(),
               );
               return UnauthorizedFailure(
-                message: error.message ?? 'غير مصرح لك',
+                message: error.message ?? 'unauthorized'.tr(),
               );
             }
             if (error.response?.statusCode == 413) {
@@ -614,14 +615,14 @@ final class BaseApiConsumer implements ApiConsumer {
             }
             if (error.response?.statusCode == 407) {
               log('APP IS OPENED IN ANOTHER DEVICE');
-              return SyncAppFailure(message: 'تم فتح التطبيق في جهاز آخر');
+              return SyncAppFailure(message: 'app_opened_elsewhere'.tr());
             }
             if (error.response?.statusCode == 402) {
               return PaymentFailure(message: error.message ?? "");
             }
             if (error.response?.statusCode == 409) {
               log('VERIFYERROR');
-              return VerifyOTPFailure(message: 'خطأ في التحقق من الكود');
+              return VerifyOTPFailure(message: 'code_verification_error'.tr());
             }
             if (decoded.containsKey('message')) {
               String message = decoded['message'];
@@ -659,10 +660,10 @@ final class BaseApiConsumer implements ApiConsumer {
               'Received invalid status code: ${error.response?.statusCode}',
         );
       case DioExceptionType.badCertificate:
-        return ServerFailure(message: 'تعذر الاتصال ');
+        return ServerFailure(message: 'connection_failed'.tr());
       case DioExceptionType.connectionError:
-        scaffoldMessengerKey.currentContext?.showErrorMessage('تعذر الاتصال ');
-        return NetworkFailure(message: 'تعذر الاتصال ');
+        scaffoldMessengerKey.currentContext?.showErrorMessage('connection_failed'.tr());
+        return NetworkFailure(message: 'connection_failed'.tr());
       case DioExceptionType.unknown:
         return UnknownFailure(message: 'Unexpected error: ${error.message}');
     }

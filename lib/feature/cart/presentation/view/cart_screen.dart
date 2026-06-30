@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:waffar/core/theme/text_styles.dart';
@@ -36,7 +37,7 @@ class _CartScreenState extends State<CartScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  "عربة التسوق",
+                  'cart'.tr(),
                   style: TextStyles.blackBold16.copyWith(fontSize: 18),
                 ),
               ),
@@ -50,9 +51,9 @@ class _CartScreenState extends State<CartScreen> {
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: 4,
                       itemBuilder: (context, index) => CartItemCard(
-                        productName: "كفر ايفون 17 بروماكس اسود جرين ليون",
+                        productName: 'prod_name_dummy'.tr(),
                         productDescription: "Green Lion Deludo PC Case",
-                        price: "499 د.أ",
+                        price: 'prod_price_dummy'.tr(),
                         quantity: _quantity1,
                         onQuantityChanged: (val) =>
                             setState(() => _quantity1 = val),

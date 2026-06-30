@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:gap/gap.dart';
 import 'package:waffar/core/helper/helper.dart';
 import 'package:waffar/core/theme/text_styles.dart';
@@ -25,7 +26,7 @@ class _ProductRatingWidgetState extends State<ProductRatingWidget> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('التقييمات', style: TextStyles.blackBold16),
+          Text('ratings'.tr(), style: TextStyles.blackBold16),
           const Gap(16),
           Center(
             child: Column(
@@ -41,7 +42,7 @@ class _ProductRatingWidgetState extends State<ProductRatingWidget> {
                 const Gap(4),
                 _Stars(count: 0, size: 22, emptyColor: Colors.grey.shade300),
                 const Gap(4),
-                Text('0 تقييمات', style: TextStyles.greyRegular15),
+                Text('zero_ratings'.tr(), style: TextStyles.greyRegular15),
               ],
             ),
           ),
@@ -83,12 +84,12 @@ class _ProductRatingWidgetState extends State<ProductRatingWidget> {
             child: Column(
               children: [
                 Text(
-                  'اضافة تقييم',
+                  'add_rating'.tr(),
                   style: TextStyles.blackBold16.copyWith(color: AppColors.primaryColor),
                 ),
                 const Gap(8),
                 Text(
-                  'يمكنك اضافة تقييم من خلال اختيار النجوم',
+                  'add_rating_hint'.tr(),
                   style: TextStyles.greyRegular15,
                   textAlign: TextAlign.center,
                 ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:waffar/core/common_widget/label.dart';
@@ -42,7 +43,7 @@ class _StoreSwitcherBottomSheetState extends State<StoreSwitcherBottomSheet> {
             children: [
               Center(
                 child: LocalizedLabel(
-                  text: "تبديل المتجر",
+                  text: 'store_switcher_title',
                   style: TextStyles.blackBold16,
                 ),
               ),
@@ -56,21 +57,21 @@ class _StoreSwitcherBottomSheetState extends State<StoreSwitcherBottomSheet> {
           const Gap(20),
           _buildStoreOption(
             index: 0,
-            title: "متجر الامارات",
+            title: 'store_uae'.tr(),
             features: [
-              "خيارات اكثر للمنتجات",
-              "اسعار تنافسية",
-              "يشمل كافة مدن الامارات",
+              'store_uae_feature1'.tr(),
+              'store_uae_feature2'.tr(),
+              'store_uae_feature3'.tr(),
             ],
           ),
           const Gap(15),
           _buildStoreOption(
             index: 1,
-            title: "متجر السعودية",
+            title: 'store_ksa'.tr(),
             features: [
-              "توصيل سريع",
-              "منتجات ذات علامات تجارية موثوقة",
-              "يشمل انحاء محلية",
+              'store_ksa_feature1'.tr(),
+              'store_ksa_feature2'.tr(),
+              'store_ksa_feature3'.tr(),
             ],
           ),
           const Gap(30),

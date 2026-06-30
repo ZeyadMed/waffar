@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -21,18 +22,18 @@ class _SubcategoryScreenState extends State<SubcategoryScreen> {
   String? _selectedFilter;
   String? _selectedSort;
 
-  final List<String> _filterOptions = ['الكل', 'متاح', 'غير متاح'];
+  final List<String> _filterOptions = ['all', 'available_filter', 'unavailable_filter'];
   final List<String> _sortOptions = [
-    'الاكثر تطابقا',
-    'الاعلى سعرا',
-    'الاقل سعرا',
+    'most_relevant',
+    'sort_highest_price',
+    'sort_lowest_price',
   ];
 
   final List<Map<String, dynamic>> _quickFilters = [
-    {'label': 'ضمان', 'icon': Icons.settings_outlined},
-    {'label': 'توصيل سريع', 'icon': Icons.local_shipping_outlined},
-    {'label': 'دفع عند الاستلام', 'icon': Icons.crop_square_outlined},
-    {'label': 'تقسيط', 'icon': Icons.crop_square_outlined},
+    {'label': 'warranty_filter', 'icon': Icons.settings_outlined},
+    {'label': 'fast_delivery_title', 'icon': Icons.local_shipping_outlined},
+    {'label': 'pay_on_delivery', 'icon': Icons.crop_square_outlined},
+    {'label': 'installment_filter', 'icon': Icons.crop_square_outlined},
   ];
   final Set<String> _activeFilters = {};
 
@@ -132,8 +133,8 @@ class _SubcategoryScreenState extends State<SubcategoryScreen> {
             child: CustomDropDown<String>(
               value: _selectedSort,
               items: _sortOptions,
-              getLabel: (item) => item,
-              hint: 'الاكثر تطابقا',
+              getLabel: (item) => item.tr(),
+              hint: 'most_relevant'.tr(),
               onChanged: (val) => setState(() => _selectedSort = val),
             ),
           ),
@@ -142,8 +143,8 @@ class _SubcategoryScreenState extends State<SubcategoryScreen> {
             child: CustomDropDown<String>(
               value: _selectedFilter,
               items: _filterOptions,
-              getLabel: (item) => item,
-              hint: 'الفلاتر',
+              getLabel: (item) => item.tr(),
+              hint: 'filters'.tr(),
               onChanged: (val) => setState(() => _selectedFilter = val),
             ),
           ),
@@ -166,10 +167,10 @@ class _SubcategoryScreenState extends State<SubcategoryScreen> {
           children: [
             Row(
               children: [
-                Text('تلفزيونات', style: TextStyles.blackBold16),
+                Text('cat_tv_name'.tr(), style: TextStyles.blackBold16),
                 Gap(5),
                 Text(
-                  '586 منتج متاح',
+                  'products_available'.tr(),
                   style: TextStyles.blackBold14.copyWith(color: Colors.grey),
                 ),
               ],
@@ -178,10 +179,10 @@ class _SubcategoryScreenState extends State<SubcategoryScreen> {
             Container(
               padding: const EdgeInsets.all(8.0),
               decoration: BoxDecoration(
-                color: AppColors.redColor2.withOpacity(0.1),
+                color: AppColors.redColor2.withValues(alpha: 0.1),
               ),
               child: Text(
-                'شحن سريع علي 80 % من المنتجات',
+                'fast_shipping_percent'.tr(),
                 style: TextStyles.blackBold14.copyWith(
                   color: AppColors.redColor2,
                 ),
@@ -214,7 +215,7 @@ class _SubcategoryScreenState extends State<SubcategoryScreen> {
                     children: [
                       Icon(icon, size: 18, color: AppColors.redColor2),
                       Gap(10),
-                      Text(label, style: TextStyles.blackBold14),
+                      Text(label.tr(), style: TextStyles.blackBold14),
                     ],
                   ),
                 );

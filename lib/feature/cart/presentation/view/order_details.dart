@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:waffar/core/common_widget/label.dart';
@@ -200,9 +201,9 @@ class _ProductsSection extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             itemCount: 3,
             itemBuilder: (context, index) => _OrderProductItem(
-              productName: 'كفر ايفون 17 بروماكس اسود جرين ليون',
+              productName: 'prod_name_dummy'.tr(),
               productDescription: 'Green Lion Delado Pc Case',
-              price: '499 د.أ',
+              price: 'prod_price_dummy'.tr(),
             ),
           ),
         ],

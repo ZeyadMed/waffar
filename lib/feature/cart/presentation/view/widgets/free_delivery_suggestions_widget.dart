@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:waffar/core/theme/text_styles.dart';
@@ -19,10 +20,10 @@ class FreeDeliverySuggestionsWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text("فرصة للحصول علي توصيل مجاني", style: TextStyles.blackBold14),
+          Text('free_delivery_chance'.tr(), style: TextStyles.blackBold14),
           const Gap(4),
           Text(
-            "قم باضافة اي منتج من المنتجات التالية للحصول\nعلي توصيل مجاني",
+            'free_delivery_hint'.tr(),
             textAlign: TextAlign.center,
             style: TextStyles.blackRegular12.copyWith(color: Colors.grey.shade600, height: 1.5),
           ),

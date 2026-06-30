@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:gap/gap.dart';
 import 'package:waffar/core/helper/helper.dart';
 import 'package:waffar/core/theme/text_styles.dart';
@@ -6,11 +7,11 @@ class ProductDescriptionWidget extends StatelessWidget {
   const ProductDescriptionWidget({super.key});
 
   static const _bullets = [
-    'مصمم بطريقة مميزة وعملية',
-    'مصنوع من مواد عملية وعالية الجودة',
-    'يتوافق الكفر مع ايفون 17 برو ماكس',
-    'يعمل على حماية الموبايل من السقوط',
-    'مقاوم للصدمات وبصمات الاصابع والاصفرار',
+    'prod_feature_1',
+    'prod_feature_2',
+    'prod_feature_3',
+    'prod_feature_4',
+    'prod_feature_5',
   ];
 
   @override
@@ -26,15 +27,15 @@ class ProductDescriptionWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('وصف المنتج', style: TextStyles.blackBold16),
+          Text('product_description'.tr(), style: TextStyles.blackBold16),
           const Gap(8),
           Text(
-            'يحافظ هذا الكفر المميز والجميل على مظهر جهازك جديد وخالي من الخدوش كما يساعد على حمايته من الصدمات والكسور Green Lion Delado Pc Case يتميز بحجمه المناسب ولونه المميز',
+            'prod_description_text'.tr(),
             style: TextStyles.greyRegular15,
             textAlign: TextAlign.right,
           ),
           const Gap(12),
-          Text('مميزات كفر موبايل جرين ليون:', style: TextStyles.blackBold14),
+          Text('prod_features_title'.tr(), style: TextStyles.blackBold14),
           const Gap(8),
           ..._bullets.map(
             (p) => Padding(
@@ -49,7 +50,7 @@ class ProductDescriptionWidget extends StatelessWidget {
                   Gap(5),
                   Expanded(
                     child: Text(
-                      p,
+                      p.tr(),
                       style: TextStyles.greyRegular15,
                       textAlign: TextAlign.right,
                     ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:waffar/core/helper/helper.dart';
 import 'package:waffar/core/theme/text_styles.dart';
 
@@ -7,16 +8,10 @@ class ProductInstallmentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const [
-        _InstallmentBanner(
-          text:
-              'او قسمها على 4 دفعات شهرية بقيمة 4.5 د.إ فقط مع تابي أعرف المزيد',
-        ),
-        SizedBox(height: 4),
-        _InstallmentBanner(
-          text:
-              'او قسمها على 4 دفعات شهرية بقيمة 4.5 د.إ فقط مع تمارا أعرف المزيد',
-        ),
+      children: [
+        _InstallmentBanner(text: 'installment_tabby'.tr()),
+        const SizedBox(height: 4),
+        _InstallmentBanner(text: 'installment_tamara'.tr()),
       ],
     );
   }

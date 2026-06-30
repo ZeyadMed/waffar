@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:waffar/core/theme/text_styles.dart';
 import 'package:waffar/core/widget/flexiable_image.dart';
@@ -37,7 +38,7 @@ class HomeCareCardWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
             child: FittedBox(
               child: Text(
-                item.title,
+                item.title.tr(),
                 textAlign: TextAlign.center,
                 style: TextStyles.blackBold14.copyWith(fontSize: 13, height: 1.3),
                 maxLines: 2,

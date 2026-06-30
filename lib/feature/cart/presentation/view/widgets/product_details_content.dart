@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:waffar/core/style/app_colors.dart';
@@ -21,29 +22,29 @@ class ProductDetailsContent extends StatelessWidget {
           ),
         ),
         const Gap(20),
-        Text("كفر ايفون 17 بروماكس اسود جرين ليون", style: TextStyles.blackBold16),
+        Text('prod_name_dummy'.tr(), style: TextStyles.blackBold16),
         const Gap(4),
         Text(
           "Green Lion Deludo PC Case",
           style: TextStyles.blackRegular12.copyWith(color: Colors.grey.shade600),
         ),
         const Gap(10),
-        Text("499 د.أ", style: TextStyles.blackBold16.copyWith(color: AppColors.primaryColor)),
+        Text('prod_price_dummy'.tr(), style: TextStyles.blackBold16.copyWith(color: AppColors.primaryColor)),
         const Gap(20),
-        Text("وصف المنتج", style: TextStyles.blackBold14),
+        Text('product_description'.tr(), style: TextStyles.blackBold14),
         const Gap(10),
         Text(
-          "يُعد iPhone من أشهر الهواتف الذكية في العالم، حيث يجمع بين التصميم الأنيق والأداء القوي والتقنيات المتطورة. يتميز بشاشة عالية الدقة توفر تجربة مشاهدة رائعة، ومعالج سريع يضمن أداءً سلسًا في التطبيقات والألعاب، بالإضافة إلى نظام تشغيل iOS الذي يوفر مستوى عالٍ من الأمان وسهولة الاستخدام.",
+          'cart_prod_description'.tr(),
           style: TextStyles.blackRegular12.copyWith(height: 1.5),
         ),
         const Gap(20),
-        Text("المميزات الرئيسية:", style: TextStyles.blackBold14),
+        Text('main_features'.tr(), style: TextStyles.blackBold14),
         const Gap(10),
-        _buildBulletPoint("تصميم عصري وخامات عالية الجودة."),
-        _buildBulletPoint("شاشة فائقة الوضوح بألوان نابضة بالحياة."),
-        _buildBulletPoint("أداء سريع بفضل معالجات Apple المتقدمة."),
-        _buildBulletPoint("كاميرات احترافية للتصوير الفوتوغرافي."),
-        _buildBulletPoint("نظام أمان متطور وحماية للخصوصية."),
+        _buildBulletPoint('cart_prod_feature_1'.tr()),
+        _buildBulletPoint('cart_prod_feature_2'.tr()),
+        _buildBulletPoint('cart_prod_feature_3'.tr()),
+        _buildBulletPoint('cart_prod_feature_4'.tr()),
+        _buildBulletPoint('cart_prod_feature_5'.tr()),
         const Gap(40),
       ],
     );

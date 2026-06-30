@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:waffar/core/style/assets.dart';
@@ -38,7 +39,7 @@ class CategoryBrandsGrid extends StatelessWidget {
             ),
             const Gap(5),
             Text(
-              "شاومي",
+              'brand_xiaomi'.tr(),
               style: TextStyles.blackRegular12,
             ),
           ],

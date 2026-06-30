@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:waffar/core/style/app_colors.dart';
@@ -39,7 +40,7 @@ class SuggestionProductCard extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    "سكوترات كهربائية للاطفال تكتك",
+                    'scooter_name'.tr(),
                     textAlign: TextAlign.center,
                     style: TextStyles.blackBold12,
                     maxLines: 2,
@@ -47,7 +48,7 @@ class SuggestionProductCard extends StatelessWidget {
                   ),
                   const Gap(4),
                   Text(
-                    "499 د.أ",
+                    'prod_price_dummy'.tr(),
                     style: TextStyles.blackBold14.copyWith(color: AppColors.primaryColor),
                   ),
                 ],
@@ -59,7 +60,7 @@ class SuggestionProductCard extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      "عرض التفاصيل",
+                      'view_details'.tr(),
                       style: TextStyles.blackRegular12.copyWith(color: Colors.grey, fontSize: 10),
                     ),
                   ),
@@ -69,7 +70,7 @@ class SuggestionProductCard extends StatelessWidget {
                       color: AppColors.primaryColor,
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: Text("اضافة", style: TextStyles.whiteText(10)),
+                    child: Text('add'.tr(), style: TextStyles.whiteText(10)),
                   ),
                 ],
               ),

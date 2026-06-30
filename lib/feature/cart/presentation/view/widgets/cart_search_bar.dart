@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -32,7 +33,7 @@ class CartSearchBar extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    "ما الذي تبحث عنه ...",
+                    'cart_search_hint'.tr(),
                     style: TextStyles.blackRegular12.copyWith(
                       color: Colors.grey,
                     ),

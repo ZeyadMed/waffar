@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:waffar/core/helper/helper.dart';
 import 'package:waffar/core/theme/text_styles.dart';
 
@@ -15,14 +16,14 @@ class ProductShippingInfoWidget extends StatelessWidget {
       child: Column(
         children: [
           _InfoRow(
-            right: 'ضمان 1 سنة',
-            left: 'اطلب الان ليصلك خلال\n5 أيام 20 يوليو',
+            right: 'warranty_1_year'.tr(),
+            left: 'delivery_time_info'.tr(),
             leftColor: AppColors.redColor2,
           ),
           Divider(height: 1, color: Colors.grey.shade200),
           _InfoRow(
-            right: 'رسوم التوصيل 20 د.إ',
-            left: 'دفع عند الاستلام',
+            right: 'delivery_fee_info'.tr(),
+            left: 'pay_on_delivery'.tr(),
             leftColor: AppColors.redColor2,
           ),
         ],

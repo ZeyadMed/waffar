@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -23,7 +24,7 @@ class OrderActionButtons extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4),
               ),
             ),
-            child: Text("متابعة التسوق", style: TextStyles.blackBold14),
+            child: Text('continue_shopping'.tr(), style: TextStyles.blackBold14),
           ),
         ),
         const Gap(10),
@@ -40,7 +41,7 @@ class OrderActionButtons extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4),
               ),
             ),
-            child: Text("أكمل الطلب", style: TextStyles.whiteBold14),
+            child: Text('complete_order'.tr(), style: TextStyles.whiteBold14),
           ),
         ),
         const Gap(15),
@@ -50,7 +51,7 @@ class OrderActionButtons extends StatelessWidget {
             const Icon(Icons.shield_outlined, color: Colors.green, size: 20),
             const Gap(5),
             Text(
-              "دفع آمن",
+              'secure_payment'.tr(),
               style: TextStyles.blackRegular12.copyWith(
                 color: Colors.green,
                 fontWeight: FontWeight.bold,
@@ -58,7 +59,7 @@ class OrderActionButtons extends StatelessWidget {
             ),
             const Spacer(),
             Text(
-              "ارجاع مجاني خلال 14 يوم",
+              'free_return_14_days'.tr(),
               style: TextStyles.blackRegular12.copyWith(color: Colors.grey),
             ),
           ],

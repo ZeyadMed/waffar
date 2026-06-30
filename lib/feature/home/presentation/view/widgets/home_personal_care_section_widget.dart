@@ -11,14 +11,14 @@ class HomePersonalCareSectionWidget extends StatelessWidget {
   const HomePersonalCareSectionWidget({super.key});
 
   static const _items = <PersonalCareItem>[
-    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "حلاقة الجسم"),
-    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "استشوارات"),
-    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "استشوارات"),
-    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "استشوارات"),
-    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "استشوارات"),
-    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "استشوارات"),
-    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "سيراميك الشعر"),
-    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "ليزر إزالة شعر"),
+    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "care_body_shaving"),
+    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "care_hair_dryer"),
+    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "care_hair_dryer"),
+    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "care_hair_dryer"),
+    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "care_hair_dryer"),
+    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "care_hair_dryer"),
+    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "care_ceramic"),
+    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "care_laser"),
   ];
 
   @override

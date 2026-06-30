@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
@@ -51,6 +52,7 @@ class ProfileScreen extends StatelessWidget {
 class _SettingsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final isArabic = context.locale.languageCode == 'ar';
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -60,15 +62,13 @@ class _SettingsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          LocalizedLabel(
-            text: 'profile_settings',
-            style: TextStyles.blackBold16,
-          ),
+          LocalizedLabel(text: 'profile_settings', style: TextStyles.blackBold16),
           const Gap(8),
           _SettingsDropdownRow(
             flag: '🌐',
             label: 'profile_language',
-            value: 'profile_language_arabic',
+            value: isArabic ? 'profile_language_arabic' : 'profile_language_english',
+            onTap: () => _showLanguagePicker(context),
           ),
           const Divider(height: 16, thickness: 0.4),
           _SettingsDropdownRow(
@@ -80,37 +80,84 @@ class _SettingsSection extends StatelessWidget {
       ),
     );
   }
+
+  void _showLanguagePicker(BuildContext context) {
+    final isArabic = context.locale.languageCode == 'ar';
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (sheetCtx) => Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              title: Text('profile_language_arabic'.tr()),
+              trailing: isArabic
+                  ? const Icon(Icons.check, color: AppColors.primaryColor)
+                  : null,
+              onTap: () {
+                Navigator.pop(sheetCtx);
+                context.setLocale(const Locale('ar'));
+              },
+            ),
+            ListTile(
+              title: Text('profile_language_english'.tr()),
+              trailing: !isArabic
+                  ? const Icon(Icons.check, color: AppColors.primaryColor)
+                  : null,
+              onTap: () {
+                Navigator.pop(sheetCtx);
+                context.setLocale(const Locale('en'));
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 class _SettingsDropdownRow extends StatelessWidget {
   final String flag;
   final String label;
   final String value;
+  final VoidCallback? onTap;
 
   const _SettingsDropdownRow({
     required this.flag,
     required this.label,
     required this.value,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const Icon(Icons.keyboard_arrow_down, color: Colors.grey, size: 20),
-        Row(
-          children: [
-            LocalizedLabel(text: value, style: TextStyles.darkRegular14),
-            const Gap(6),
-            Text(flag, style: const TextStyle(fontSize: 16)),
-          ],
-        ),
-        LocalizedLabel(
-          text: label,
-          style: TextStyles.darkBold14.copyWith(color: Colors.grey.shade600),
-        ),
-      ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Icon(
+            onTap != null ? Icons.keyboard_arrow_down : Icons.keyboard_arrow_down,
+            color: Colors.grey,
+            size: 20,
+          ),
+          Row(
+            children: [
+              LocalizedLabel(text: value, style: TextStyles.darkRegular14),
+              const Gap(6),
+              Text(flag, style: const TextStyle(fontSize: 16)),
+            ],
+          ),
+          LocalizedLabel(
+            text: label,
+            style: TextStyles.darkBold14.copyWith(color: Colors.grey.shade600),
+          ),
+        ],
+      ),
     );
   }
 }
