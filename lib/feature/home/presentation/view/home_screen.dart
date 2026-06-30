@@ -14,6 +14,8 @@ import 'package:waffar/core/widget/flexiable_image.dart';
 import 'package:waffar/feature/home/presentation/view/widgets/personal_care_items.dart';
 import 'package:waffar/feature/home/presentation/view/widgets/product_widget.dart';
 
+import 'widgets/department_every_one_look_for_widget.dart';
+
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
@@ -175,7 +177,7 @@ class HomeScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.15),
+            color: Colors.grey.withValues(alpha: 0.15),
             spreadRadius: 1,
             blurRadius: 8,
             offset: const Offset(0, 4),
@@ -194,12 +196,17 @@ class HomeScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-            child: Text(
-              item.title,
-              textAlign: TextAlign.center,
-              style: TextStyles.blackBold14.copyWith(fontSize: 13, height: 1.3),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+            child: FittedBox(
+              child: Text(
+                item.title,
+                textAlign: TextAlign.center,
+                style: TextStyles.blackBold14.copyWith(
+                  fontSize: 13,
+                  height: 1.3,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ),
         ],
@@ -221,8 +228,8 @@ class HomeScreen extends StatelessWidget {
               },
               image: Assets.assetsImagesTv,
               name: 'Product 1',
-              price: '100\$',
-              discountPrice: '80\$',
+              price: '\$100',
+              discountPrice: '\$80',
             ),
           ),
         ),
@@ -237,15 +244,15 @@ class HomeScreen extends StatelessWidget {
         children: List.generate(
           10,
           (index) => Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
-            child: ProductWidget(
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+            child: DepartmentEveryOneLookForWidget(
               onTap: () {
                 context.push(AppRouter.productDetailsScreen);
               },
               image: Assets.assetsImagesTv,
               name: 'Product 1',
-              price: '100\$',
-              discountPrice: '80\$',
+              price: '\$100',
+              discountPrice: '\$80',
             ),
           ),
         ),
