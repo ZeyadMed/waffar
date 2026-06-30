@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 import 'package:waffar/core/common_widget/label.dart';
 import 'package:waffar/core/extension/context_extension.dart';
-import 'package:waffar/core/router/app_router.dart';
-import 'package:waffar/core/style/app_colors.dart';
 import 'package:waffar/core/style/assets.dart';
 import 'package:waffar/core/theme/text_styles.dart';
 import 'package:waffar/core/widget/app_bar_custom.dart';
 import 'package:waffar/core/widget/carousel_slider_widget.dart';
 import 'package:waffar/core/widget/category_grid_widget.dart';
 import 'package:waffar/core/widget/flexiable_image.dart';
-import 'package:waffar/feature/home/presentation/view/widgets/personal_care_items.dart';
-import 'package:waffar/feature/home/presentation/view/widgets/product_widget.dart';
-
-import 'widgets/department_every_one_look_for_widget.dart';
+import 'package:waffar/feature/home/presentation/view/widgets/home_category_scroll_widget.dart';
+import 'package:waffar/feature/home/presentation/view/widgets/home_everyone_searching_widget.dart';
+import 'package:waffar/feature/home/presentation/view/widgets/home_featured_products_widget.dart';
+import 'package:waffar/feature/home/presentation/view/widgets/home_personal_care_section_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -27,25 +24,6 @@ class HomeScreen extends StatelessWidget {
     CategoryItem(image: Assets.assetsImagesBanners3),
     CategoryItem(image: Assets.assetsImagesBanners3),
   ];
-  final List<PersonalCareItem> personalCareItems = const [
-    PersonalCareItem(
-      image: Assets.assetsImagesEstshwar, // غير بالصور بتاعتك
-      title: "حلاقة الجسم",
-    ),
-    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "استشوارات"),
-    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "استشوارات"),
-    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "استشوارات"),
-    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "استشوارات"),
-    PersonalCareItem(image: Assets.assetsImagesEstshwar, title: "استشوارات"),
-    PersonalCareItem(
-      image: Assets.assetsImagesEstshwar,
-      title: "سيراميك الشعر",
-    ),
-    PersonalCareItem(
-      image: Assets.assetsImagesEstshwar,
-      title: "ليزر إزالة شعر",
-    ),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +34,6 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppBarCustom(isLogoEnabled: true),
-              // Gap(10),
               Padding(
                 padding: const EdgeInsets.only(left: 5.0, right: 5.0),
                 child: CarouselSliderWidget(
@@ -72,7 +49,6 @@ class HomeScreen extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 5.0, right: 5.0),
-
                 child: FlexibleImage(
                   source: Assets.assetsImagesBanner2,
                   width: double.infinity,
@@ -82,7 +58,7 @@ class HomeScreen extends StatelessWidget {
               ),
               CategoryGridWidget(items: categories),
               const Gap(20),
-              categoryWidget(context),
+              const HomeCategoryScrollWidget(),
               const Gap(20),
               Padding(
                 padding: const EdgeInsets.only(left: 5.0, right: 5.0),
@@ -92,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               const Gap(15),
-              categoriesEveryoneSearching(context),
+              const HomeEveryoneSearchingWidget(),
               const Gap(20),
               Padding(
                 padding: const EdgeInsets.only(left: 5.0, right: 5.0),
@@ -102,204 +78,10 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               const Gap(15),
-              featuredProducts(context),
+              const HomeFeaturedProductsWidget(),
               const Gap(20),
-              personalCareWidget(),
+              const HomePersonalCareSectionWidget(),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Container personalCareWidget() {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(color: AppColors.homeBGColor),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                LocalizedLabel(
-                  text: "personalCare",
-                  style: TextStyles.blackBold20,
-                ),
-                viewMoreButton(),
-              ],
-            ),
-            Gap(10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: GridView.builder(
-                shrinkWrap: true,
-                physics:
-                    const NeverScrollableScrollPhysics(), // مهم عشان يكون داخل SingleChildScrollView
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4, // 4 في كل صف
-                  crossAxisSpacing: 12,
-                  mainAxisSpacing: 16,
-                  childAspectRatio: 0.75, // تعديل حسب احتياجك (ارتفاع vs عرض)
-                ),
-                itemCount: personalCareItems.length,
-                itemBuilder: (context, index) {
-                  final item = personalCareItems[index];
-                  return _buildCareCard(item);
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  GestureDetector viewMoreButton() {
-    return GestureDetector(
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-        decoration: BoxDecoration(
-          color: Colors.transparent,
-          border: Border.all(color: Colors.black, width: 1),
-          // borderRadius: BorderRadius.circular(20),
-        ),
-        child: LocalizedLabel(text: "view_more", style: TextStyles.blackBold14),
-      ),
-    );
-  }
-
-  Widget _buildCareCard(PersonalCareItem item) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withValues(alpha: 0.15),
-            spreadRadius: 1,
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Expanded(
-            flex: 3,
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: FlexibleImage(source: item.image, fit: BoxFit.contain),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-            child: FittedBox(
-              child: Text(
-                item.title,
-                textAlign: TextAlign.center,
-                style: TextStyles.blackBold14.copyWith(
-                  fontSize: 13,
-                  height: 1.3,
-                ),
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  SingleChildScrollView featuredProducts(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: List.generate(
-          10,
-          (index) => Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
-            child: ProductWidget(
-              onTap: () {
-                context.push(AppRouter.productDetailsScreen);
-              },
-              image: Assets.assetsImagesTv,
-              name: 'Product 1',
-              price: '\$100',
-              discountPrice: '\$80',
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  SingleChildScrollView categoriesEveryoneSearching(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: List.generate(
-          10,
-          (index) => Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-            child: DepartmentEveryOneLookForWidget(
-              onTap: () {
-                context.push(AppRouter.productDetailsScreen);
-              },
-              image: Assets.assetsImagesTv,
-              name: 'Product 1',
-              price: '\$100',
-              discountPrice: '\$80',
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  SingleChildScrollView categoryWidget(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: List.generate(
-          10,
-          (index) => Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.0),
-            child: GestureDetector(
-              onTap: () {
-                context.push(AppRouter.subCategoryScreen);
-              },
-              child: Column(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(50),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
-                    ),
-                    child: FlexibleImage(
-                      source: Assets.assetsIconsApple,
-                      width: 50,
-                      height: 50,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Gap(5),
-                  Text('Category ${index + 1}', style: TextStyles.blackBold14),
-                ],
-              ),
-            ),
           ),
         ),
       ),
