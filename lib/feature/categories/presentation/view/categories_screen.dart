@@ -37,12 +37,13 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                   Expanded(
+                  Expanded(
                     flex: 1,
                     child: CategorySidebar(
                       categories: _mainCategories,
                       selectedIndex: _selectedCategoryIndex,
-                      onSelect: (index) => setState(() => _selectedCategoryIndex = index),
+                      onSelect: (index) =>
+                          setState(() => _selectedCategoryIndex = index),
                     ),
                   ),
                   Expanded(
@@ -56,11 +57,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                           children: [
                             const CategoryProductsGrid(),
                             const Gap(20),
-                            Center(
-                              child: LocalizedLabel(
-                                text: "افضل البراندات",
-                                style: TextStyles.blackBold16,
-                              ),
+                            LocalizedLabel(
+                              text: "افضل البراندات",
+                              style: TextStyles.blackBold16,
                             ),
                             const Gap(15),
                             const CategoryBrandsGrid(),
@@ -69,7 +68,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                       ),
                     ),
                   ),
-                 
                 ],
               ),
             ),
