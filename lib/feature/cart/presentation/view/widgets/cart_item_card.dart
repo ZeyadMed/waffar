@@ -14,6 +14,8 @@ class CartItemCard extends StatelessWidget {
   final int quantity;
   final ValueChanged<int> onQuantityChanged;
   final VoidCallback? onImageTap;
+  final bool showQuantitySelector;
+  final bool showDeleteIcon;
 
   const CartItemCard({
     super.key,
@@ -24,6 +26,8 @@ class CartItemCard extends StatelessWidget {
     required this.price,
     this.onTapDelete,
     this.onImageTap,
+    this.showQuantitySelector = true,
+    this.showDeleteIcon = true,
   });
 
   @override
@@ -67,10 +71,11 @@ class CartItemCard extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      GestureDetector(
-                        onTap: onTapDelete,
-                        child: const Icon(Icons.delete_outline, color: Colors.grey, size: 20),
-                      ),
+                      if (showDeleteIcon)
+                        GestureDetector(
+                          onTap: onTapDelete,
+                          child: const Icon(Icons.delete_outline, color: Colors.grey, size: 20),
+                        ),
                     ],
                   ),
                   const Gap(4),
@@ -83,10 +88,11 @@ class CartItemCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(price, style: TextStyles.blackBold16.copyWith(color: AppColors.primaryColor)),
-                      CartItemQuantitySelector(
-                        quantity: quantity,
-                        onQuantityChanged: onQuantityChanged,
-                      ),
+                      if (showQuantitySelector)
+                        CartItemQuantitySelector(
+                          quantity: quantity,
+                          onQuantityChanged: onQuantityChanged,
+                        ),
                     ],
                   ),
                 ],

@@ -45,28 +45,27 @@ class _CartScreenState extends State<CartScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   children: [
-                    CartItemCard(
-                      productName: "كفر ايفون 17 بروماكس اسود جرين ليون",
-                      productDescription: "Green Lion Deludo PC Case",
-                      price: "499 د.أ",
-                      quantity: _quantity1,
-                      onQuantityChanged: (val) => setState(() => _quantity1 = val),
-                      onTapDelete: () {},
-                      onImageTap: _showProductDetails,
-                    ),
-                    CartItemCard(
-                      productName: "كفر ايفون 17 بروماكس اسود جرين ليون",
-                      productDescription: "Green Lion Deludo PC Case",
-                      price: "499 د.أ",
-                      quantity: _quantity2,
-                      onQuantityChanged: (val) => setState(() => _quantity2 = val),
-                      onTapDelete: () {},
-                      onImageTap: _showProductDetails,
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: 4,
+                      itemBuilder: (context, index) => CartItemCard(
+                        productName: "كفر ايفون 17 بروماكس اسود جرين ليون",
+                        productDescription: "Green Lion Deludo PC Case",
+                        price: "499 د.أ",
+                        quantity: _quantity1,
+                        onQuantityChanged: (val) =>
+                            setState(() => _quantity1 = val),
+                        onTapDelete: () {},
+                        onImageTap: _showProductDetails,
+                      ),
                     ),
                     const Gap(10),
                     const OrderSummaryWidget(),
                     const Gap(16),
-                    FreeDeliverySuggestionsWidget(onProductTap: _showProductDetails),
+                    FreeDeliverySuggestionsWidget(
+                      onProductTap: _showProductDetails,
+                    ),
                     const Gap(30),
                   ],
                 ),

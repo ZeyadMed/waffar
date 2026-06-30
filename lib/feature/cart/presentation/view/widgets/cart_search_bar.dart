@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:waffar/core/style/app_colors.dart';
 import 'package:waffar/core/theme/text_styles.dart';
 
@@ -13,6 +14,13 @@ class CartSearchBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Row(
         children: [
+          GestureDetector(
+            onTap: () {
+              context.pop();
+            },
+            child: const Icon(Icons.arrow_back, color: Colors.white),
+          ),
+          const Gap(12),
           Expanded(
             child: Container(
               height: 40,
@@ -25,15 +33,15 @@ class CartSearchBar extends StatelessWidget {
                 children: [
                   Text(
                     "ما الذي تبحث عنه ...",
-                    style: TextStyles.blackRegular12.copyWith(color: Colors.grey),
+                    style: TextStyles.blackRegular12.copyWith(
+                      color: Colors.grey,
+                    ),
                   ),
                   const Spacer(),
                 ],
               ),
             ),
           ),
-          const Gap(12),
-          const Icon(Icons.arrow_forward, color: Colors.white),
         ],
       ),
     );

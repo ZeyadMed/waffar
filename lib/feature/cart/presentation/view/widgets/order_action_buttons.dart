@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
+import 'package:waffar/core/router/app_router.dart';
 import 'package:waffar/core/style/app_colors.dart';
 import 'package:waffar/core/theme/text_styles.dart';
 
@@ -29,7 +31,9 @@ class OrderActionButtons extends StatelessWidget {
           width: double.infinity,
           height: 45,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              context.push(AppRouter.shippingDetailsScreen);
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primaryColor,
               shape: RoundedRectangleBorder(
@@ -47,8 +51,10 @@ class OrderActionButtons extends StatelessWidget {
             const Gap(5),
             Text(
               "دفع آمن",
-              style: TextStyles.blackRegular12
-                  .copyWith(color: Colors.green, fontWeight: FontWeight.bold),
+              style: TextStyles.blackRegular12.copyWith(
+                color: Colors.green,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const Spacer(),
             Text(

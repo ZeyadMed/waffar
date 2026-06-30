@@ -6,6 +6,9 @@ import 'package:waffar/feature/auth/login/presentation/view/login_screen.dart';
 import 'package:waffar/feature/auth/otp/presentation/view/otp_screen.dart';
 import 'package:waffar/feature/auth/register/presentation/view/register_screen.dart';
 import 'package:waffar/feature/cart/presentation/view/cart_screen.dart';
+import 'package:waffar/feature/cart/presentation/view/order_confirmed.dart';
+import 'package:waffar/feature/cart/presentation/view/order_details.dart';
+import 'package:waffar/feature/cart/presentation/view/shipping_details.dart';
 import 'package:waffar/feature/home/presentation/view/home_screen.dart';
 import 'package:waffar/feature/home/presentation/view/subcategory_screen.dart';
 import 'package:waffar/feature/on_boarding/presentation/views/on_boarding_screen.dart';
@@ -31,6 +34,9 @@ abstract class AppRouter {
   static const String subCategoryScreen = '/SubCategoryScreen';
   static const String productDetailsScreen = '/ProductDetailsScreen';
   static const String cartScreen = '/CartScreen';
+  static const String shippingDetailsScreen = '/shippingDetailsScreen';
+  static const String orderConfirmedScreen = '/orderConfirmedScreen';
+  static const String orderDetailsScreen = '/orderDetailsScreen';
 
 
   // ************* PROFILE *************
@@ -112,6 +118,18 @@ abstract class AppRouter {
       GoRoute(
         path: cartScreen,
         builder: (context, state) => const CartScreen(),
+      ),
+      GoRoute(
+        path: shippingDetailsScreen,
+        builder: (context, state) => const ShippingDetails(),
+      ),
+      GoRoute(
+        path: orderConfirmedScreen,
+        builder: (context, state) => const OrderConfirmedScreen(),
+      ),
+      GoRoute(
+        path: orderDetailsScreen,
+        builder: (context, state) => const OrderDetailsScreen(),
       ),
 
       // GoRoute(
